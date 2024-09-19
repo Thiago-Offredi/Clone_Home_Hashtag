@@ -1,0 +1,892 @@
+/* Sistema de Tamanhos - https://typescale.com/ 
+
+Fontes - Minor Third - 1.200 - Em PX tamanhos para fontes
+4.4 - 5.4 - 6.4 - 7.7 - 9.2 - 11.1 - 13.3 - 16 - 19.2 - 23 - 27.6 - 33.2 - 39.8 - 47.8 - 57.3 - 68.8 - 82.6
+
+Espaçamentos - Major Third - 1.250 - Em PX margin e paddings
+2.1 - 2.7 - 3.3 - 4.2 - 5.2 - 6.5 - 8.2 - 10.2 - 12.8 - 16 - 20 - 25 - 31.2 - 39 - 48.8 - 61 - 76.3 - 95.4 - 119.2
+
+*/
+
+/* Estilos Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /* 1rem = 10rem habilita o uso do rem como medida absoluta */
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #404040;
+  font-size: 1.6rem;
+  line-height: 1.4rem;
+  background-color: #f4f5f7;
+}
+
+h1 {
+  font-size: 3.32rem;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-align: justify;
+}
+h2 {
+  font-size: 2.76rem;
+  line-height: 1.1;
+  font-weight: 400;
+}
+p {
+  font-size: 1.6rem;
+}
+strong {
+  font-weight: 600;
+}
+.botao {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 3rem;
+  display: inline-block;
+  color: white;
+  border: 0;
+  padding: 1.38rem 2.5rem;
+  box-shadow: 0 0.21rem 0.8rem rgba(0, 0, 0, 0.15);
+  border-right: solid 0.4rem #993c38;
+  border-bottom: solid 0.4rem #993c38;
+  text-align: center;
+  cursor: pointer;
+}
+.section {
+  padding: 7.63rem 2rem;
+}
+.container {
+  max-width: 106rem;
+  margin: 0 auto;
+}
+.container-hero {
+  display: flex;
+  gap: 3.12rem;
+  align-items: center;
+}
+ul {
+  list-style: none;
+}
+input {
+  padding: 1.02rem;
+  background-color: white;
+  box-shadow: inset 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  border: 0;
+  border-radius: 0.8rem;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: #404040;
+}
+input::placeholder {
+  color: #757575;
+}
+input:focus {
+  outline: none;
+}
+.contem--filhos {
+  position: relative;
+}
+.contem--filhos ul {
+  display: none;
+  flex-flow: column;
+  gap: 0.82rem;
+  align-items: stretch;
+  width: max-content;
+  position: absolute;
+  background-color: white;
+  padding: 0.71rem 0;
+  border-radius: 2.5rem;
+  box-shadow: 0 0.21rem 0.4rem rgba(0, 0, 0, 0.15),
+    inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+.contem--filhos:hover ul {
+  display: flex;
+}
+.contem--filhos ul li {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.15);
+  padding: 0 2rem;
+}
+.contem--filhos ul li:last-child {
+  border: none;
+  padding: 0.71rem 2rem;
+}
+/* inicio dos estilos não globais */
+/* Cabeçalho */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.12rem;
+  position: sticky; /*Vai permitir que o header hole por cima das informações*/
+  z-index: 9999; /*Faz com que o header cubra os elementos ao scrollar*/
+  top: 0; /*matem a posição colada em cima*/
+  left: 0; /*matem a posição colada a esquerda*/
+  background-color: white;
+  padding: 1.28rem 3.1rem; /*1.28rem equivale  cima baixo| -- 3.12rem lado para o outro */
+  box-shadow: 0 0.21rem 0.4rem rgba(0, 0, 0, 0.1); /*primeiro numero equivale ao deslocamento lado a lado -- segundo numero vertical |
+  o terceiro o tanto que a sombra vai desfocar blur
+  o quarto é o spreed quanto a sobram vai crescer 
+  e o quinto a cor da sombra
+  coloca 6 propriedades se for interna inset se for externa omiti o inset */
+}
+nav ul {
+  /* dessa maneira o flex container é o nav e flex item é a ul*/
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+nav ul {
+  list-style: none; /* tira os bullets da lista não ordenada*/
+}
+.item-lista-cabecalho a {
+  color: #112e61;
+  font-size: 1.4rem;
+  text-transform: uppercase; /*Propriedade para deixar tudo em maisculo*/
+  text-decoration: none; /*Propriedade para tirar o sumblinhado dos links*/
+  font-weight: 600; /*Propriedade para deixar a fonte com mais peso*/
+}
+.item-lista-cabecalho a:hover,
+.item-lista-cabecalho a:active {
+  color: #ff6900;
+}
+.contem--filhos::after {
+  content: "\2bc6";
+}
+/* Seção Hero */
+.section-hero {
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUN-banner-01.png);
+  background-position: 50%; /*Alinha a imagem no centro da section*/
+  background-repeat: no-repeat; /*nao repete a imagem*/
+  background-size: cover; /*Coloca a imagem pra preencher todo o espaço */
+}
+.hero-botao {
+  background-image: linear-gradient(
+    180deg,
+    #ff645e,
+    #ff9253
+  ); /*180 deg representa em cima e embaixo*/
+}
+.hero-botao:hover {
+  background-color: #ff9253;
+  background-image: none;
+  border: solid 0.4rem #ff9253;
+}
+.hero-paragrafo {
+  font-size: 1.92rem;
+  line-height: 1.3; /*Quanto maior a fonte menor o lineheight*/
+  text-align: justify;
+}
+.iframe-video {
+  aspect-ratio: 16/9;
+  border-radius: 2.5rem;
+  flex: 5; /*Pega a mesma fatia do espaço disponível*/
+}
+.flexhero-coluna {
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+  flex: 6; /*Pega a mesma fatia do espaço disponível*/
+  align-items: start; /*Faz com que o botão pegue apenas o espaço necessário*/
+}
+.flex-herobotoes {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+}
+/* Seção Conteudo Gratuitos */
+.secao-conteudos {
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUN-banner-02.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem 0; /* Adiciona espaçamento acima e abaixo da seção */
+}
+
+.container-conteudos {
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.img-conteudos {
+  max-width: 47.8rem;
+  flex: 45;
+  position: relative;
+  left: 2rem;
+  z-index: 1;
+}
+
+.conteudos-coluna {
+  display: flex;
+  flex-flow: column;
+  gap: 3.9rem;
+  flex: 55;
+}
+
+.caixas-cursos-hashtag {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.caixa-cursos-hashtag {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.6rem;
+  position: relative;
+  box-shadow: inset 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.15);
+  border-radius: 2.5rem;
+  padding: 2rem;
+}
+
+.caixa-gratuito-h3 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg); /* Corrigido a ordem das transformações */
+  background-image: linear-gradient(90deg, #aa56e6, #6d42b9);
+  padding: 0.92rem 1.6rem;
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.21rem 0.4rem rgba(0, 0, 0, 0.15);
+}
+
+.conteudos-titulo {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.conteudos-caixa-logos {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.circulo-logo-curso {
+  display: inline-block;
+  background-color: #e7e7e7;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0.4rem 0.2rem rgba(0, 0, 0, 0.15);
+  padding: 1.02rem;
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.circulo-logo-curso img {
+  width: 100%;
+}
+
+.gratuito-realce {
+  color: #7a40be;
+  font-weight: 600;
+}
+
+.gratuito-h3 {
+  font-weight: 700;
+}
+
+.conteudos-lista-redessociais {
+  display: flex;
+  flex-flow: column;
+  gap: 0.65rem;
+}
+
+.gratuito-link-lista li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.gratuito-link-lista:link,
+.gratuito-link-lista:visited {
+  display: inline-block;
+  align-items: center;
+  padding: 0.42rem 3.12rem;
+  background-color: #eee;
+  border-radius: 2.5rem;
+  box-shadow: inset 0 0 0.4rem 0.2rem rgba(0, 0, 0, 0.15);
+  font-size: 1.92rem;
+  line-height: 1.3;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gratuito-link-lista:hover,
+.gratuito-link-lista:active {
+  text-decoration: underline;
+}
+
+.gratuito-link-lista img {
+  width: 1.8rem;
+}
+
+/* Seção Diferenciais */
+
+.container-diferenciais {
+  border-radius: 5rem;
+  background-color: #f9f9f9;
+  box-shadow: inset 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
+  /*spreed 0.3rem equivale ao tamanho da sombra*/
+}
+.divisao-diferenciais {
+  display: flex;
+  gap: 4.88rem 3.12rem;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+  padding: 6.88rem;
+  padding-bottom: 12rem;
+  background-image: linear-gradient(225deg, #196b9f, #1a82a7);
+  color: white;
+}
+.diferenciais-p {
+  font-size: 1.92rem;
+  line-height: 1.3;
+  margin-top: 0.52rem;
+  flex: 1;
+  text-align: right;
+}
+.caixa-diferenciais-h2 {
+  border-left: solid 0.4rem #ffb20f;
+  padding: 0.52rem 0 0.52rem 1.1rem;
+  flex: 1;
+}
+.caixa-divisao-diferenciais {
+  display: flex;
+  flex-flow: column;
+  gap: 1.02rem;
+}
+.caixa-restante-diferenciais {
+  display: flex;
+  flex-flow: column;
+  gap: 4.88rem;
+  padding: 6.88rem;
+}
+.bloco-itens-diferenciais {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: -10rem;
+}
+.item-da-caixa {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  gap: 1.6rem;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  border-radius: 2.5rem;
+  background-color: white;
+  box-shadow: 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
+  padding: 7rem 2.8rem 2.8rem 3.12rem;
+}
+.img-item-caixa {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  border-radius: 1.25rem;
+  background-color: #ffaf00;
+  width: 10rem;
+  height: 10rem;
+  padding: 1.3rem;
+  box-shadow: inset 0 0.8rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+.item-da-caixa img {
+  width: 100%;
+}
+.caixa-diferenciais-h2 {
+  border-left: solid 0.4rem #ffb20f;
+  padding: 0.52rem 0 0.52rem 1.1rem;
+  flex: 1;
+}
+.iferenciais-h2 strong {
+  font-weight: 600;
+}
+
+.diferenciais-h3 {
+  font-size: 2.3rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #005e88;
+}
+.diferenciais-h3-empresa {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.diferenciais-h3-empresa a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #005e88;
+}
+.diferenciais-empresas img {
+  height: 4rem;
+  filter: grayscale(100); /* deixa as imagens com fundo cinza*/
+}
+.logo-loreal,
+.logo-disney {
+  opacity: 60%;
+}
+.logo-subsea {
+  opacity: 70%;
+}
+.diferenciais-empresas {
+  display: flex;
+  flex-flow: column;
+  gap: 3.12rem;
+  align-items: center;
+}
+.all-empresas {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 2rem;
+}
+/* Seção o que falam  */
+.section-oqfalam {
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUN-banner-04.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.flex-container-oquefalam {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 3.12rem;
+}
+.oque-falam-texto {
+  color: white;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+.oque-falam span {
+  font-weight: 600;
+}
+.oque-falam-carrosel {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  position: relative;
+  align-self: stretch;
+  gap: 2.5rem;
+}
+.oque-falam-carrosel-imgs {
+  display: flex;
+  gap: 2rem;
+  align-self: stretch;
+}
+.imagem-carrossel {
+  flex: 1;
+  background-color: #7489af;
+  background-blend-mode: multiply;
+  background-position: 50%;
+  background-size: cover;
+  aspect-ratio: 16/9;
+  border-radius: 2.5rem;
+  display: inline-block;
+  position: relative;
+}
+.-oque-falam-img-1 {
+  background-image: url(http://i3.ytimg.com/vi/N_EZD04zmrw/hqdefault.jpg);
+}
+.-oque-falam-img-2 {
+  background-image: url(http://i3.ytimg.com/vi/auqWeBJLJHY/hqdefault.jpg);
+}
+.-oque-falam-img-3 {
+  background-image: url(http://i3.ytimg.com/vi/FD79IpCaM1Y/hqdefault.jpg);
+}
+.oque-falamseta {
+  position: absolute;
+  top: 50%;
+}
+.esquerda {
+  left: 0;
+  transform: translate(-150%, -65%);
+  cursor: pointer;
+}
+.direita {
+  right: 0;
+  transform: translate(150%, -65%);
+  cursor: pointer;
+}
+
+.play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.item-navegacao {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #86a8bc;
+  display: inline-block;
+}
+.ativa {
+  background-color: #14577f;
+}
+.botao-oqfalam {
+  background-image: linear-gradient(180deg, #196c9f, #1a80a7);
+  border-bottom-color: #14577f;
+  border-right-color: #14577f;
+}
+.botao-oqfalam:hover {
+  background-image: none;
+  background-color: #1a80a7;
+
+  border: solid 0.4rem #1a80a7;
+}
+/* Seçao na midia */
+.section-namidia {
+  padding-top: 3.9rem;
+  padding-bottom: 3.9rem;
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUND-Banner-05_1.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.flex-container-namidia {
+  display: flex;
+  gap: 3.12rem;
+  justify-content: space-between;
+}
+
+.flex-namidia,
+.flex-namidia-titulo {
+  display: flex;
+  align-items: center;
+}
+
+.flex-namidia {
+  gap: 2rem;
+}
+
+/*  SEÇÃO BLOG  */
+.container-blog {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  position: relative;
+  border-radius: 5rem;
+  box-shadow: inset 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  padding: 5rem;
+  padding-top: 7.63rem;
+}
+.blog-postadoem {
+  font-size: 1.33rem;
+  line-height: 1.5;
+}
+.blog-postadoem a {
+  font-weight: 600;
+  color: #f7a70c;
+}
+.blog-titulopost {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.post-blog {
+  display: flex;
+  flex-flow: column;
+  gap: 1.38rem;
+  flex: 1 1 35%;
+  border-radius: 2.5rem;
+  box-shadow: inset 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  width: 49%;
+  background-color: #fff;
+}
+.post-blog img {
+  width: 100%;
+}
+.img-postadoem {
+  display: flex;
+  flex-flow: column;
+  gap: 0.42;
+}
+.caixa-blog-h2 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: inline-block;
+  background-image: linear-gradient(90deg, #feb914, #f6a50b);
+  padding: 0.92rem 2.6rem;
+  border-radius: 1rem;
+  transform: rotate(-3deg) translate(-50%, -50%);
+  /* text-wrap: nowrap; Como queremos que o texto quebre não
+  funciona em alguns navegadores */
+  width: max-content;
+  top: -1rem;
+}
+
+/* Seção como ajudar */
+.secao-comoajudar {
+  padding: 0;
+}
+
+.secao-sec-laranja {
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUND-banner-07.png);
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.secao-sec-laranja,
+.secao-sec-cinza {
+  padding: 7.63rem 2rem;
+}
+
+.container-comoajudar-2,
+.container-comoajudar {
+  width: 86rem;
+}
+
+.container-comoajudar,
+.container-comoajudar-2 {
+  display: flex;
+  flex-flow: column;
+}
+
+.container-comoajudar-2 {
+  gap: 1.6rem;
+}
+
+.container-comoajudar {
+  align-items: center;
+  gap: 3.12rem;
+}
+
+.caixa-comoajudar-h2 {
+  display: inline-block;
+  padding: 0.42rem 1.6rem;
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.21rem 0.4rem rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(90deg, #14a1d5, #1a8ad4);
+}
+
+.comoajudar-lista {
+  display: flex;
+  flex-flow: column;
+  gap: 1.28rem;
+  border-radius: 2.5rem;
+  box-shadow: inset 0 0 0.8rem 0.15rem rgba(0, 0, 0, 0.15);
+  padding: 2.5rem;
+  background-color: #f9f9f9;
+}
+
+.comoajudar-lista a:link,
+.comoajudar-lista a:visited,
+.comoajudar-paragrafo a:link,
+.comoajudar-paragrafo a:visited {
+  color: #008ff7;
+  font-weight: 600;
+}
+
+.comoajudar-lista a:hover,
+.comoajudar-lista a:active,
+.comoajudar-paragrafo a:hover,
+.comoajudar-paragrafo a:active {
+  color: #0056b3;
+}
+
+.comoajudar-lista li {
+  display: flex;
+  align-items: start;
+  gap: 0.82rem;
+}
+
+.comoajudar-lista li img {
+  transform: translateY(40%);
+}
+
+.comoajudar-paragrafo b {
+  font-weight: 600;
+}
+/* Seção Minicurso */
+.minicurso {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+}
+.container-minicurso {
+  display: flex;
+  flex-flow: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+.minicurso div {
+  display: flex;
+  flex-flow: column;
+  gap: 1.1rem;
+}
+.minicurso div label {
+  margin-left: 0.8rem;
+}
+.section-mini {
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUND-banner-08_1.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+.botao-mini {
+  background: #ffba29;
+  border-bottom-color: #664a10;
+  border-bottom-color: #664a10;
+  box-shadow: 4px 3px 8px -2px rgba(0, 0, 0, 0.3);
+}
+.botao-mini:hover {
+  border: solid 0.2rem #ffba29;
+}
+/* Seção rodape */
+.rodape {
+  padding-top: 5rem;
+}
+.container-rodape {
+  width: 106rem;
+  display: flex;
+  align-items: start;
+  gap: 4.88rem;
+}
+
+.logo-footer {
+  width: 18rem;
+}
+
+.subsecao-rodape,
+.subsecao-cursosonline,
+.subsecao-assistente,
+.rodape-div-iconelink,
+.rodape-coluna {
+  display: flex;
+  flex-flow: column;
+}
+
+.rodape-coluna {
+  gap: 3.12rem;
+}
+
+.subsecao-rodape {
+  gap: 1.6rem;
+}
+
+.subsecao-cursosonline {
+  gap: 1.28rem;
+}
+
+.subsecao-assistente {
+  gap: 1.02rem;
+}
+
+.rodape-div-iconelink {
+  gap: 0.65rem;
+}
+
+.rodape-iconelink {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.rodape-redessociais {
+  display: flex;
+  gap: 0.82rem;
+}
+
+.rodape-titulo,
+.rodape-subtitulo,
+.rodape-seg-subtitulo {
+  font-weight: 600;
+}
+
+.rodape-link {
+  color: #1a77a4;
+}
+
+.rodape-copyright {
+  text-align: center;
+}
+
+.rodape svg {
+  width: 2.4rem;
+}
+
+.link-redessociais svg {
+  fill: #404040;
+  stroke: #404040;
+}
+
+.link-redessociais:hover svg {
+  fill: #f60;
+  stroke: #f60;
+}
+
+.rodape a.link-redessociais:link,
+.rodape a.link-redessociais:visited,
+.rodape a.link-redessociais:hover,
+.rodape a.link-redessociais:active {
+  color: transparent;
+}
+
+.rodape a:active,
+.rodape a:hover {
+  color: #f60;
+}
+
+.form-newsletter {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.6rem;
+  border-radius: 2.5rem;
+  box-shadow: inset 0 0 0.8rem 0.15rem rgba(0, 0, 0, 0.15);
+  padding: 2.5rem;
+  background-color: #fff;
+}
+
+.botao-newsletter {
+  background-color: #1a77a4;
+  border-bottom-color: #0c374d;
+  border-right-color: #0c374d;
+}
+
+.botao-newsletter:hover {
+  border: solid 0.2rem #1a77a4;
+}
+
+/* Fixado */
+
+.logo-whatsapp {
+  position: fixed;
+  right: 1rem;
+  bottom: 0.8rem;
+  width: 8.5rem;
+}
+
+.logo-whatsapp:hover {
+  transform: translate(0.5rem, 0.5rem);
+}
+
+.logo-whatsapp img {
+  width: 100%;
+}
